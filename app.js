@@ -72,27 +72,30 @@ function game(){
         let computerSelection = computerPlay();
         playRound(playerSelection,computerSelection);
 
+
+        if(counter<5){
+            if(playerScore>computerScore){
+                alert(`Player is currently winning, Scores: Player: ${playerScore} Computer: ${computerScore}`);
+            }else if(computerScore> playerScore){
+               alert(`Computer is currently winning, Scores: Player: ${playerScore} Computer: ${computerScore}`);
+            }else if(computerScore==playerScore){
+               alert(`Computer and Player are currently tied, Scores: Player: ${playerScore} Computer: ${computerScore}`);
+            }
+            
+        }else if(counter==5){
+            if(playerScore>computerScore){
+                alert(`Player Wins: Player: ${playerScore} Computer: ${computerScore}`);
+                resetGame();
+            }else if(computerScore> playerScore){
+                alert(`Computer Wins: ${playerScore} Computer: ${computerScore}`);
+                resetGame();
+            }
+        }
+
     }  
     
     
-    if(counter<5){
-        if(playerScore>computerScore){
-            alert(`Player is currently winning, Scores: Player: ${playerScore} Computer: ${computerScore}`);
-        }else if(computerScore> playerScore){
-           alert(`Computer is currently winning, Scores: Player: ${playerScore} Computer: ${computerScore}`);
-        }else if(computerScore==playerScore){
-           alert(`Computer and Player are currently tied, Scores: Player: ${playerScore} Computer: ${computerScore}`);
-        }
-        
-    }else if(counter==5){
-        if(playerScore>computerScore){
-            alert(`Player Wins: Player: ${playerScore} Computer: ${computerScore}`);
-            resetGame();
-        }else if(computerScore> playerScore){
-            alert(`Computer Wins: ${playerScore} Computer: ${computerScore}`);
-            resetGame();
-        }
-    }
+   
 
    
 }
