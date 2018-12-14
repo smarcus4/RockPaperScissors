@@ -13,18 +13,18 @@ function computerPlay(){
 
 function playerPlay(){
     let playerChoiceCase = prompt("Type rock paper or scissors");
-    playerChoice= playerChoiceCase.toLowerCase();
+    let playerChoice= playerChoiceCase.toLowerCase();
     if(playerChoice=="rock" || playerChoice=="paper" || playerChoice=="scissors"){
         alert(`You have selected ${playerChoice}`);
         return playerChoice;
 
     }
     else if(playerChoice===null || playerChoice==="" ){
-        alert("You need to enter rock, paper or scissors")
-        playerPlay();
+        alert("You need to enter rock, paper or scissors");
+        playerPlay()
     }else{
         alert("Please enter rock paper or scissors");
-        playerPlay();
+        playerPlay()
     }
     
 }
@@ -84,10 +84,10 @@ function game(){
             
         }else if(counter==5){
             if(playerScore>computerScore){
-                alert(`Player Wins: Player: ${playerScore} Computer: ${computerScore}`);
+                alert(`Player Wins: Player: ${playerScore} \n Computer: ${computerScore}`);
                 resetGame();
             }else if(computerScore> playerScore){
-                alert(`Computer Wins: ${playerScore} Computer: ${computerScore}`);
+                alert(`Computer Wins: \n Player: ${playerScore} \n Computer: ${computerScore}`);
                 resetGame();
             }
         }
