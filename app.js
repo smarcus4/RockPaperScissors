@@ -3,110 +3,122 @@ let computerScore=0;
 let counter=0;
 
 
+const printText = document.getElementById("printOut");
 
 
-function computerPlay(){
-    let gameOptions = ["Rock","Paper","Scissors"];
-    let gameChoice = gameOptions[Math.floor(Math.random()* gameOptions.length)].toLowerCase();
-    return gameChoice;
-}
+// function playerPlay(){
+//     let playerChoiceCase = prompt("Type rock paper or scissors");
+//     let playerChoice= playerChoiceCase.toLowerCase();
+//     if(playerChoice=="rock" || playerChoice=="paper" || playerChoice=="scissors"){
+//         alert(`You have selected ${playerChoice}`);
+//         return playerChoice;
 
-function playerPlay(){
-    let playerChoiceCase = prompt("Type rock paper or scissors");
-    let playerChoice= playerChoiceCase.toLowerCase();
-    if(playerChoice=="rock" || playerChoice=="paper" || playerChoice=="scissors"){
-        alert(`You have selected ${playerChoice}`);
-        return playerChoice;
+//     }
+//     else if(playerChoice===null || playerChoice==="" ){
+//         alert("You need to enter rock, paper or scissors");
+//         playerPlay()
+//     }else{
+//         alert("Please enter rock paper or scissors");
+//         playerPlay()
+//     }
+    
+// }
 
+
+
+
+// function game(){
+
+    function computerPlay(){
+        let gameOptions = ["Rock","Paper","Scissors"];
+        gameChoice = gameOptions[Math.floor(Math.random()* gameOptions.length)].toLowerCase();
+        computerPlay = gameChoice;
     }
-    else if(playerChoice===null || playerChoice==="" ){
-        alert("You need to enter rock, paper or scissors");
-        playerPlay()
-    }else{
-        alert("Please enter rock paper or scissors");
-        playerPlay()
-    }
-    
-}
+    computerPlay();
 
 
+        function playRound(playerSelection){
+
+            const playerChoice = playerSelection.target.id;
 
 
-function game(){
-
-
-    
-
-    while(counter<5){
-
-        function playRound(playerSelection, computerSelection){
-    
+            console.log(computerPlay);
             //    playerSelection =  playerSelection.toLowerCase();
             //    computerSelection = computerSelection.toLowerCase();
             
-            if(playerSelection=="rock" && computerSelection=="scissors"){
+            if(playerChoice=="rock" && computerPlay=="scissors"){
                 playerScore++;
                 counter+=1;
                 alert("Player Wins, Rock beats Scissors");
-            }else if(playerSelection=="paper" && computerSelection=="rock"){
+            }else if(playerChoice=="paper" && computerPlay=="rock"){
                 playerScore++;
                 counter+=1;
                 alert("Player Wins, Paper beats Rock");
         
-            }else if(playerSelection=="scissors" && computerSelection=="paper"){        
+            }else if(playerChoice=="scissors" && computerPlay=="paper"){        
                 playerScore++;
                 counter+=1;
                 alert("Player Wins, Scissors beats Paper");
-            }else if(playerSelection==computerSelection){
+            }else if(playerChoice==computerPlay){
                 counter+=1;
                 alert("Tie Game!");
             }else{
                 counter+=1;
                 computerScore++;
-                alert(`Computer Wins, ${computerSelection} beats ${playerSelection}`);
-            }
                 
+                alert(`Computer Wins, ${computerPlay} beats ${playerChoice}`);
+            }
+            getGameScore();
+
         }
 
-        let playerSelection = playerPlay();
-        let computerSelection = computerPlay();
-        playRound(playerSelection,computerSelection);
+//         let playerSelection = playerPlay();
+//         let computerSelection = computerPlay();
+//         playRound(playerSelection,computerSelection);
 
 
-        if(counter<5){
-            if(playerScore>computerScore){
-                alert(`Player is currently winning, Scores: Player: ${playerScore} Computer: ${computerScore}`);
-            }else if(computerScore> playerScore){
-               alert(`Computer is currently winning, Scores: Player: ${playerScore} Computer: ${computerScore}`);
-            }else if(computerScore==playerScore){
-               alert(`Computer and Player are currently tied, Scores: Player: ${playerScore} Computer: ${computerScore}`);
-            }
-            
-        }else if(counter==5){
-            if(playerScore>computerScore){
-                alert(`Player Wins: Player: ${playerScore} \n Computer: ${computerScore}`);
-                resetGame();
-            }else if(computerScore> playerScore){
-                alert(`Computer Wins: \n Player: ${playerScore} \n Computer: ${computerScore}`);
-                resetGame();
-            }
+ 
+
+function getGameScore(){
+    if(counter<5){
+        if(playerScore>computerScore){
+            printText.textContent = (`Player is currently winning, Scores: Player: ${playerScore} Computer: ${computerScore}`);
+        }else if(computerScore> playerScore){
+            printText.textContent = (`Computer is currently winning, Scores: Player: ${playerScore} Computer: ${computerScore}`);
+        }else if(computerScore==playerScore){
+            printText.textContent = (`Computer and Player are currently tied, Scores: Player: ${playerScore} Computer: ${computerScore}`);
         }
+    }else if(counter==5){
+        if(playerScore>computerScore){
+            printText.textContent = (`Player Wins: Player:\n ${playerScore} \n Computer: ${computerScore}`);
+            resetGame();
+        }else if(computerScore> playerScore){
+            printText.textContent = (`Computer Wins: \n Player: ${playerScore} \n Computer: ${computerScore}`);
+            resetGame();
+        }
+    }
 
-    }  
+}  
     
     
    
 
    
-}
+// }
 
 function resetGame(){
     computerScore=0;
     playerScore=0;
     counter=0
     alert("Game Now Reset")
-    playerPlay();
-    game();
+
 }
 
-game();
+// game();
+
+const buttons = document.querySelectorAll("button");
+
+buttons.forEach((button) =>{
+    button.addEventListener("click", playRound);
+})
+
