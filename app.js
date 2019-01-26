@@ -29,15 +29,17 @@ const printText = document.getElementById("printOut");
 
 // function game(){
 
-    function computerPlay(){
-        let gameOptions = ["Rock","Paper","Scissors"];
-        gameChoice = gameOptions[Math.floor(Math.random()* gameOptions.length)].toLowerCase();
-        computerPlay = gameChoice;
-    }
-    computerPlay();
+   
 
 
         function playRound(playerSelection){
+
+            function computerPlay(){
+                let gameOptions = ["Rock","Paper","Scissors"];
+                gameChoice = gameOptions[Math.floor(Math.random()* gameOptions.length)].toLowerCase();
+                computerPlay = gameChoice;
+            }
+            computerPlay();
 
             const playerChoice = playerSelection.target.id;
 
